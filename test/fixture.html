@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>DeepSeek DOM 测试页</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", sans-serif; max-width: 860px; margin: 24px auto; padding: 0 16px; }
+  .ds-message { margin: 24px 0; }
+  .mine { background: #eff6ff; padding: 10px 14px; border-radius: 8px; }
+  .ds-markdown { line-height: 1.8; }
+  .md-code-block { background: #f6f8fa; border: 1px solid #e5e7eb; border-radius: 6px; margin: 12px 0; }
+  .md-code-block-header { display: flex; justify-content: space-between; padding: 6px 10px; border-bottom: 1px solid #e5e7eb; color: #666; font-size: 12px; }
+  .md-code-block pre { margin: 0; padding: 10px; }
+  .ds-think-content { color: #777; border-left: 2px solid #ddd; padding-left: 10px; }
+  .cite { background: #eef1f4; border-radius: 8px; padding: 0 4px; font-size: 11px; }
+  .sources { display: inline-flex; gap: 6px; border: 1px solid #e5e7eb; border-radius: 14px; padding: 2px 10px; font-size: 12px; }
+  .katex .katex-mathml { display: none; }
+</style>
+</head>
+<body>
+<h1>模拟 DeepSeek 对话页</h1>
+
+<div class="ds-message">
+  <div class="mine">塞尔达两作游玩时长</div>
+</div>
+
+<div class="ds-message">
+  <div class="think-wrap">
+    <div class="think-title">
+      <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 1l7 14H1z"/></svg>
+      <span>已思考（用时 3 秒）</span>
+      <button type="button">展开</button>
+    </div>
+    <div class="ds-think-content">
+      <p>搜索结果给出了一些相关页面。对于《旷野之息》，主线约 35 小时。</p>
+      <p>需要区分主线、主线和支线、全收集。</p>
+    </div>
+  </div>
+
+  <div class="ds-markdown ds-markdown--block">
+    <h3>《旷野之息》</h3>
+    <p>主线约 <strong>35 小时</strong>，主线 + 支线约 <em>65 小时</em>，全收集约 <strong>100 小时</strong>。<span class="cite">17</span></p>
+    <ul>
+      <li>主线剧情：35 小时</li>
+      <li>主线 + 主要支线：65 小时
+        <ul>
+          <li>神庙 120 座</li>
+          <li>回忆 13 段</li>
+        </ul>
+      </li>
+      <li>全收集：100 小时以上</li>
+    </ul>
+
+    <h3>各类“神庙任务”</h3>
+    <p>共有 42 个支线任务直接关联神庙的解锁，本质上是为你获取“试炼通过证”铺路。</p>
+
+    <blockquote>
+      <p>把神庙当探索世界时“顺手”完成的主要目标。</p>
+    </blockquote>
+
+    <table>
+      <thead>
+        <tr><th>项目</th><th>旷野之息</th><th>王国之泪</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>主线</td><td>35 小时</td><td>60 小时</td></tr>
+        <tr><td>主线 + 支线</td><td>65 小时</td><td>118 小时</td></tr>
+        <tr><td>全收集</td><td>100 小时</td><td>248 小时</td></tr>
+      </tbody>
+    </table>
+
+    <p>时间换算公式 <span class="katex"><span class="katex-mathml"><math><semantics><annotation encoding="application/x-tex">T_{total} = T_{main} + T_{side}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="mord">T</span><span>total</span></span></span> 只作参考。</p>
+
+    <p>代码示例：</p>
+    <div class="md-code-block">
+      <div class="md-code-block-header">
+        <div class="md-code-block-header-left"><span>python</span></div>
+        <button type="button" class="copy">复制</button>
+      </div>
+      <div class="md-code-block-body">
+        <pre><code>def hours(main, side):
+    return main + side
+
+print(hours(35, 30))</code></pre>
+      </div>
+    </div>
+    <p>行内代码 <code>hours(35, 30)</code> 也在。</p>
+
+    <p>参考：<a href="https://www.ign.com/wikis/the-legend-of-zelda-breath-of-the-wild/" target="_blank">IGN 攻略</a> 与 <a href="https://www.gamersky.com/">游民星空</a>。</p>
+
+    <hr>
+    <h2>总结</h2>
+    <p>一个比较推荐的节奏是：<strong>把神庙当作探索世界时“顺手”完成的主要目标</strong>，享受解谜和成长。</p>
+
+    <div class="sources"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""><span>40 个网页</span></div>
+    <div class="action-bar">
+      <button type="button">复制</button>
+      <button type="button">重新生成</button>
+      <button type="button">分享</button>
+    </div>
+  </div>
+</div>
+
+<script src="../src/extract.js"></script>
+</body>
+</html>

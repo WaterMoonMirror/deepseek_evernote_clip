@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>DeepSeek 剪藏</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header class="hd">
+    <div class="hd-title">DeepSeek 剪藏</div>
+    <div class="hd-sub" id="sub">正在识别页面…</div>
+  </header>
+
+  <button class="clip-btn" id="clip">开始剪藏</button>
+  <div class="status" id="status"></div>
+
+  <section class="sec">
+    <div class="sec-label">剪藏格式</div>
+    <label class="row">
+      <input type="radio" name="mode" value="qa" checked>
+      <span class="row-main">
+        <span class="row-title">回答 + 提问</span>
+        <span class="row-desc">带上前一个问题，方便以后检索</span>
+      </span>
+    </label>
+    <label class="row">
+      <input type="radio" name="mode" value="answer">
+      <span class="row-main">
+        <span class="row-title">只要回答</span>
+        <span class="row-desc">最干净的正文</span>
+      </span>
+    </label>
+    <label class="row">
+      <input type="radio" name="mode" value="all">
+      <span class="row-main">
+        <span class="row-title">整个对话</span>
+        <span class="row-desc">当前会话里所有问答</span>
+      </span>
+    </label>
+    <label class="row">
+      <input type="radio" name="mode" value="selection">
+      <span class="row-main">
+        <span class="row-title">选中片段</span>
+        <span class="row-desc">先在页面上选中文字，只剪这一段</span>
+      </span>
+    </label>
+  </section>
+
+  <div class="fix" id="fix" hidden>
+    <button class="link-btn" id="retry">重新检测</button>
+    <button class="link-btn" id="reload">刷新 DeepSeek 页面</button>
+  </div>
+
+  <section class="sec">
+    <div class="sec-label">细节</div>
+    <label class="row row-compact">
+      <input type="checkbox" id="opt-thinking">
+      <span class="row-main"><span class="row-title">包含思考过程</span></span>
+    </label>
+    <label class="row row-compact">
+      <input type="checkbox" id="opt-links" checked>
+      <span class="row-main"><span class="row-title">附参考链接</span></span>
+    </label>
+    <label class="row row-compact">
+      <input type="checkbox" id="opt-autoopen">
+      <span class="row-main"><span class="row-title">复制后打开印象笔记</span></span>
+    </label>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">剪藏到</div>
+    <div class="target">
+      <span class="target-logo">象</span>
+      <span class="target-name">印象笔记</span>
+      <span class="target-tag">剪贴板</span>
+    </div>
+    <button class="link-btn" id="open-yn">打开印象笔记网页版</button>
+    <p class="hint">复制后到印象笔记里 Ctrl+V 即可，格式（标题、列表、表格、代码块、公式）原样保留。</p>
+  </section>
+
+  <footer class="ft">快捷键 Alt+Shift+D：剪藏最近一条回答</footer>
+
+  <script src="clipboard.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

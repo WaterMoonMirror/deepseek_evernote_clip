@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>扩展交互测试（模拟 chrome API）</title>
+<link rel="stylesheet" href="../src/inject.css">
+<style>
+  body { font-family: -apple-system, "PingFang SC", sans-serif; max-width: 820px; margin: 24px auto; padding: 0 16px; }
+  .ds-message { margin: 24px 0; }
+  .mine { background: #eff6ff; padding: 10px 14px; border-radius: 8px; }
+  .ds-markdown { line-height: 1.8; }
+  .md-code-block { background: #f6f8fa; border: 1px solid #e5e7eb; border-radius: 6px; margin: 12px 0; }
+  .md-code-block-header { display: flex; justify-content: space-between; padding: 6px 10px; border-bottom: 1px solid #e5e7eb; color: #666; font-size: 12px; }
+  .md-code-block pre { margin: 0; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="ds-message"><div class="mine">局域网 IP 访问条件</div></div>
+<div class="ds-message">
+  <div class="ds-markdown ds-markdown--block">
+    <h3>结论</h3>
+    <p>同一个局域网内，用 <strong>IP + 端口</strong> 访问即可，不需要域名。</p>
+    <ol>
+      <li>服务监听 0.0.0.0</li>
+      <li>系统防火墙放行端口</li>
+    </ol>
+    <div class="md-code-block">
+      <div class="md-code-block-header"><span>bash</span><button type="button">复制</button></div>
+      <pre>ipconfig
+netstat -ano | findstr 8765</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.chrome = {
+    storage: {
+      sync: { get: function (k, cb) { cb({}); }, set: function () {} },
+      onChanged: { addListener: function () {} }
+    },
+    runtime: {
+      onMessage: { addListener: function () {} },
+      sendMessage: function () {},
+      lastError: null
+    }
+  };
+  window.__opened = [];
+</script>
+<script src="../src/extract.js"></script>
+<script src="../src/clipboard.js"></script>
+<script src="../src/deepseek.js"></script>
+</body>
+</html>

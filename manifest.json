@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "DeepSeek 剪藏到印象笔记",
+  "version": "1.0.2",
+  "description": "一键把 DeepSeek 的回答剪藏到印象笔记：标题、列表、表格、代码块、公式原样保留。",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "clipboardWrite", "sidePanel", "tabs"],
+  "host_permissions": ["https://chat.deepseek.com/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
+  "action": {
+    "default_title": "DeepSeek 剪藏到印象笔记",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.deepseek.com/*"],
+      "js": ["src/extract.js", "src/clipboard.js", "src/deepseek.js"],
+      "css": ["src/inject.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "clip-last": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "剪藏最近一条 DeepSeek 回答"
+    }
+  }
+}
